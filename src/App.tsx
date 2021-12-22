@@ -1,39 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
+import logo from './reactLogo.svg';
+import saarLogo from './assets/logo.svg'
 import './App.css';
 import Typography from '@mui/material/Typography';
 
 interface AppProps { }
 
+
 function App({ }: AppProps) {
-  // Create the count state.
-  const [count, setCount] = useState(0);
-  // Create the counter (+1 every second).
-  useEffect(() => {
-    const timer = setTimeout(() => setCount(count + 1), 1000);
-    return () => clearTimeout(timer);
-  }, [count, setCount]);
-  // Return the App component.
   return (
     <div className="App">
       <header className="App-header">
+        <img src={saarLogo} style={{ width: 200, objectFit: 'fill' }} />
         <img src={logo} className="App-logo" alt="logo" />
-        <Typography>
-          This is a Typography using MUI 5
+
+        <Typography variant='h1'>
+          Human Computer Interface
         </Typography>
-        <p>
-          Page has been open for <code>{count}</code> seconds.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
+        <Typography variant='h3'>
+          Group 7
+        </Typography>
       </header>
     </div>
   );
