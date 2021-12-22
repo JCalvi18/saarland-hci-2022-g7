@@ -1,12 +1,16 @@
+import ThemeProvider from '@mui/material/styles/ThemeProvider';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
+import muiTheme from './theme/muiTheme';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <ThemeProvider theme={muiTheme}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+  </ThemeProvider>,
   document.getElementById('root'),
 );
 
