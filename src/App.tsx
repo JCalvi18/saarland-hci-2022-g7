@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import logo from './reactLogo.svg';
+import logo from './assets/reactLogo.svg';
 import saarLogo from './assets/logo.svg'
 import './App.css';
 import Typography from '@mui/material/Typography';
