@@ -1,15 +1,20 @@
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+
 import './index.css';
 import muiTheme from './theme/muiTheme';
 
+
+
+
 ReactDOM.render(
   <ThemeProvider theme={muiTheme}>
-    <React.StrictMode>
+    <BrowserRouter>
       <App />
-    </React.StrictMode>,
+    </BrowserRouter>
   </ThemeProvider>,
   document.getElementById('root'),
 );
