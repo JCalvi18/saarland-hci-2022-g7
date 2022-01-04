@@ -88,7 +88,7 @@ export function CalendarPage() {
       <IconButton
         style={{
           position: 'absolute',
-          bottom: 150,
+          bottom: 120,
           backgroundColor: Colors.green,
           color: Colors.white,
           alignSelf: 'flex-end',

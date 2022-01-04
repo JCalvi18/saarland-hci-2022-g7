@@ -83,7 +83,7 @@ export function HCICard({
       <Typography variant='h6' style={{ gridArea: 'title', fontWeight: 'bold' }}>
         {title}
       </Typography>
-      <Typography variant='body1' noWrap style={{ marginLeft: 4, gridArea: 'body' }}>
+      <Typography variant='body1' noWrap style={{ marginLeft: 4, gridArea: 'body', whiteSpace: 'pre-line' }}>
         {body}
       </Typography>
 

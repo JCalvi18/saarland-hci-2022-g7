@@ -25,7 +25,7 @@ function App({ }: AppProps) {
         flexDirection: 'column',
         margin: '0px auto',
         height: '95vh',
-        minWidth: 500,
+        minWidth: 350,
         maxWidth: 800,
         gap: 8,
       }}
