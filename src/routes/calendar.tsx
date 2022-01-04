@@ -28,7 +28,7 @@ export function CalendarPage() {
         flexDirection: 'column',
         flex: 1,
         padding: '8px 0px',
-        backgroundColor: Colors.gray2,
+        backgroundColor: Colors.blueLight,
         gap: 24,
       }}
     >
@@ -54,7 +54,7 @@ export function CalendarPage() {
         {Object.entries(orderedDate).map(([key, value]) =>
           <>
             <Typography style={{
-              backgroundColor: Colors.purpleLight,
+              backgroundColor: Colors.greenLight,
               padding: '16px 8px',
               borderRadius: 16,
             }} >
@@ -76,7 +76,8 @@ export function CalendarPage() {
         style={{
           position: 'absolute',
           bottom: 150,
-          backgroundColor: Colors.purple,
+          backgroundColor: Colors.green,
+          color: Colors.white,
           alignSelf: 'flex-end',
           marginRight: 32,
         }}

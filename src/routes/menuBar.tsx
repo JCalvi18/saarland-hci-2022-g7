@@ -18,14 +18,14 @@ export function MenuBar() {
         gap: 4,
       }}
     >
-      {/* <Button
+      <Button
         style={{ flex: 1 }}
         component={Link}
         to={`${routes.start}`}
         variant="contained"
         color="primary">
-        Home
-      </Button> */}
+        Welcome
+      </Button>
       <Button
         style={{ flex: 1 }}
         component={Link}
@@ -42,14 +42,14 @@ export function MenuBar() {
         color="primary">
         Communities
       </Button>
-      <Button
+      {/* <Button
         style={{ flex: 1 }}
         component={Link}
         to={`${routes.settings}`}
         variant="contained"
         color="primary">
         Settings
-      </Button>
+      </Button> */}
     </div>
   )
 }

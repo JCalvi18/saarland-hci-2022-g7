@@ -2,6 +2,7 @@ import React, { PropsWithChildren, CSSProperties } from 'react'
 
 import { Dialog, Divider, IconButton, Typography } from '@material-ui/core'
 import { Close as CloseIcon } from '@material-ui/icons'
+import { Colors } from '../../theme/types'
 
 
 interface Props {

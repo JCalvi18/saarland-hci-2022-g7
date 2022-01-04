@@ -29,7 +29,7 @@ export function CommunityPage() {
         flex: 1,
         width: '100%',
         padding: '8px 0px',
-        backgroundColor: Colors.gray2,
+        backgroundColor: Colors.blueLight,
         gap: 24,
       }}
     >
@@ -55,7 +55,7 @@ export function CommunityPage() {
         {Object.entries(orderedDate).map(([key, value]) =>
           <>
             <Typography style={{
-              backgroundColor: Colors.purpleLight,
+              backgroundColor: Colors.greenLight,
               padding: '16px 8px',
               borderRadius: 16,
             }} >
@@ -78,6 +78,7 @@ export function CommunityPage() {
           open={!!selectedEvent}
           onClose={() => setSelectedEvent(undefined)}
           data={selectedEvent}
+          publicEvent
         />}
 
     </div>

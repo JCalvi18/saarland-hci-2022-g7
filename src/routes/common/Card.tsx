@@ -33,7 +33,7 @@ export function HCICard({
         placeItems: 'start',
         padding: 16,
         marginLeft: 24,
-        boxShadow: hovered ? `0px 4px 4px ${Colors.purpleLight}` : undefined,
+        boxShadow: hovered ? `0px 6px 6px ${Colors.green}` : undefined,
         backgroundColor: Colors.white,
         borderRadius: 24,
         gridTemplateColumns: 'minmax(2fr) minmax(1fr) minmax(1fr)',
@@ -60,6 +60,7 @@ export function HCICard({
         <Checkbox
           value={check}
           onChange={() => setCheck(!check)}
+          color='primary'
           style={{
             gridArea: 'type',
             alignSelf: 'center',

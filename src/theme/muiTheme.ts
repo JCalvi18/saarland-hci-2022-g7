@@ -9,7 +9,10 @@ const mainTypography = theme.typography
 const muiTheme = createTheme({
   palette: {
     primary: {
-      main: Colors.purple
+      main: Colors.blue
+    },
+    secondary: {
+      main: Colors.green
     }
   },
 

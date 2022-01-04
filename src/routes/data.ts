@@ -93,6 +93,7 @@ export const communityData: AEvent[] = [
     body: 'Movie night',
     repeating: 'weekly',
     covidMeasure: 'online',
+    participants: 5,
   }, {
     type: CalendarType.event,
     date: '2022-01-07T21:30:00.787Z',
@@ -120,11 +121,13 @@ export const communityData: AEvent[] = [
     title: 'HCI post exam party',
     body: 'Party with proffesor and tutors',
     covidMeasure: 'online',
+    participants: 16,
   }, {
     type: CalendarType.event,
     date: '2022-04-01T16:00:00.787Z',
     title: 'Summer semester 2022',
     body: 'Sarland University welcome event',
     covidMeasure: 'online',
+    participants: 40,
   }
 ]

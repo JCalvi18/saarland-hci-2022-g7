@@ -4,6 +4,12 @@ export enum Modes {
 }
 //TODO color naming can change
 export enum Colors {
+  blue = '#4A667C',
+  blueLight = '#7AA8C2',
+
+  green = '#2C634C',
+  greenLight = '#83A96C',
+
   purple = '#6b00fc',
   cyan = '#47e8dd',
   red = '#f7534b',
