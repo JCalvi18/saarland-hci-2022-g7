@@ -11,19 +11,43 @@ export function MenuBar() {
       style={{
         display: 'flex',
         width: '100%',
-
+        alignItems: 'stretch',
+        height: '100%',
+        borderRadius: 16,
+        overflow: 'hidden',
+        gap: 4,
       }}
     >
-      <Button component={Link} to={`${routes.start}`} variant="contained" color="primary">
+      {/* <Button
+        style={{ flex: 1 }}
+        component={Link}
+        to={`${routes.start}`}
+        variant="contained"
+        color="primary">
         Home
-      </Button>
-      <Button component={Link} to={`${routes.calendar}`} variant="contained" color="primary">
+      </Button> */}
+      <Button
+        style={{ flex: 1 }}
+        component={Link}
+        to={`${routes.calendar}`}
+        variant="contained"
+        color="primary">
         Calendar
       </Button>
-      <Button component={Link} to={`${routes.communities}`} variant="contained" color="primary">
+      <Button
+        style={{ flex: 1 }}
+        component={Link}
+        to={`${routes.communities}`}
+        variant="contained"
+        color="primary">
         Communities
       </Button>
-      <Button component={Link} to={`${routes.settings}`} variant="contained" color="primary">
+      <Button
+        style={{ flex: 1 }}
+        component={Link}
+        to={`${routes.settings}`}
+        variant="contained"
+        color="primary">
         Settings
       </Button>
     </div>

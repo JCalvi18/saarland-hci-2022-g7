@@ -26,15 +26,19 @@ function App({ }: AppProps) {
         alignItems: 'center',
         justifyContent: 'stretch',
         margin: '0px auto',
-        height: '100vh',
-        maxWidth: '70vh'
+        height: '95vh',
+        maxWidth: 800,
+        gap: 8,
       }}
     >
       <div
         style={{
-          backgroundColor: Colors.cyan,
+          backgroundColor: Colors.yellowDisabled,
+          display: 'flex',
           flex: 10,
-          width: '100%'
+          width: '100%',
+          borderRadius: 16,
+          overflow: 'hidden',
         }}
       >
         <Routes>
@@ -48,7 +52,6 @@ function App({ }: AppProps) {
         style={{
           flex: 1,
           width: '100%',
-          backgroundColor: Colors.purpleLight,
         }}
       >
         <MenuBar />
