@@ -15,10 +15,10 @@ abstract class ATask extends ACalendar {
   fulfilled?: boolean
 }
 
-abstract class AEvent extends ACalendar {
+export abstract class AEvent extends ACalendar {
   type = CalendarType.event as const
   repeating?: 'daily' | 'weekly'
-  covidMeasure?: '2G' | '2G+' | 'test'
+  covidMeasure?: '2G' | '2G+' | 'test' | 'online'
   participants?: number
 }
 
@@ -72,7 +72,59 @@ export const calendarData: CalendarProp[] = [
     date: '2022-01-07T12:00:00.787Z',
     title: 'Tame Impala Concert',
     body: 'Secret place in paris',
-    covidMeasure: '2G+',
+    covidMeasure: 'online',
   }
 ]
 
+
+export const communityData: AEvent[] = [
+  {
+    type: CalendarType.event,
+    date: '2022-01-05T12:00:00.787Z',
+    title: 'HCI Q&A',
+    body: 'Meeting at Teams',
+    repeating: 'weekly',
+    covidMeasure: 'online',
+    participants: 15,
+  }, {
+    type: CalendarType.event,
+    date: '2022-01-06T20:00:00.787Z',
+    title: 'Saar Kino',
+    body: 'Movie night',
+    repeating: 'weekly',
+    covidMeasure: 'online',
+  }, {
+    type: CalendarType.event,
+    date: '2022-01-07T21:30:00.787Z',
+    title: 'Reggae Party',
+    body: 'Mainstrasse 66001',
+    covidMeasure: '2G+',
+    participants: 10,
+  }, {
+    type: CalendarType.event,
+    date: '2022-01-07T12:00:00.787Z',
+    title: 'Tame Impala Concert',
+    body: 'Secret place in paris',
+    covidMeasure: '2G+',
+    participants: 65,
+  }, {
+    type: CalendarType.event,
+    date: '2022-02-14T10:00:00.787Z',
+    title: 'HCI exam',
+    body: 'Final Exam at university Campus',
+    covidMeasure: '2G+',
+    participants: 30,
+  }, {
+    type: CalendarType.event,
+    date: '2022-01-15T20:00:00.787Z',
+    title: 'HCI post exam party',
+    body: 'Party with proffesor and tutors',
+    covidMeasure: 'online',
+  }, {
+    type: CalendarType.event,
+    date: '2022-04-01T16:00:00.787Z',
+    title: 'Summer semester 2022',
+    body: 'Sarland University welcome event',
+    covidMeasure: 'online',
+  }
+]
