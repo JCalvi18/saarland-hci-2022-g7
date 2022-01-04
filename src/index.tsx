@@ -8,9 +8,6 @@ import App from './App';
 import './index.css';
 import muiTheme from './theme/muiTheme';
 
-
-
-
 ReactDOM.render(
   <ThemeProvider theme={muiTheme}>
     <BrowserRouter>

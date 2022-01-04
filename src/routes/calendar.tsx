@@ -1,35 +1,42 @@
 import React, { useState } from 'react'
 import { Colors } from '../theme/types'
-
-import { Search as SearchIcon } from '@material-ui/icons'
-
-import { map } from 'lodash'
-
+import {
+  Search as SearchIcon,
+  Add as AddIcon,
+} from '@material-ui/icons'
+import { chain, map } from 'lodash'
 import { calendarData, CalendarProp, CalendarType } from './data'
 import dayjs from 'dayjs'
-
 import ClosableDialog from './common/DialogClosable'
 import { Detail } from './common/Detail'
-import { Box, Checkbox, TextField, Typography } from '@material-ui/core'
+import { Box, Checkbox, IconButton, TextField, Typography } from '@material-ui/core'
+import { CalendarForm } from './common/calendarForm'
 
 export function CalendarPage() {
+  const [selectedEvent, setSelectedEvent] = useState<CalendarProp | undefined>(undefined)
+  const [openForm, setFormOpen] = useState<boolean>(false)
 
-  const [selectedEvent, setSelectedEvent] = useState<number>(-1)
-
+  const orderedDate = chain(calendarData)
+    .orderBy([entry => entry.date], ['asc'])
+    .groupBy((entry) => dayjs(entry.date).format('YYYY-MM-DD'))
+    .value()
+  console.log(orderedDate)
   return (
     <div
       style={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         width: '100%',
         padding: '8px 0px',
         backgroundColor: Colors.gray2,
         gap: 24,
       }}
     >
+
       <Box sx={{
         display: 'flex',
+        alignSelf: 'center',
         alignItems: 'flex-end',
         justifyContent: 'center',
       }}>
@@ -45,19 +52,48 @@ export function CalendarPage() {
           padding: 16
         }}
       >
-        {
-          map(calendarData, (entry, i) =>
-            <Card
-              data={entry}
-              onEventSelect={() => setSelectedEvent(i)}
-            />
-          )
-        }
+        {Object.entries(orderedDate).map(([key, value]) =>
+          <>
+            <Typography style={{
+              backgroundColor: Colors.purpleLight,
+              padding: '16px 8px',
+              borderRadius: 16,
+            }} >
+              {dayjs(key).format('dddd DD.MM.YYYY')}
+            </Typography>
+            {
+              map(value, (entry, i) =>
+                <Card
+                  key={`${entry}-${i}`}
+                  data={entry}
+                  onEventSelect={() => setSelectedEvent(entry)}
+                />
+              )
+            }
+          </>
+        )}
       </div>
-      <EventDetails
-        open={selectedEvent >= 0}
-        onClose={() => setSelectedEvent(-1)}
-        data={selectedEvent >= 0 ? calendarData[selectedEvent] : calendarData[0]}
+      <IconButton
+        style={{
+          position: 'absolute',
+          bottom: 150,
+          backgroundColor: Colors.purple,
+          alignSelf: 'flex-end',
+          marginRight: 32,
+        }}
+        onClick={() => setFormOpen(true)}
+      >
+        <AddIcon />
+      </IconButton>
+      {selectedEvent &&
+        <EventDetails
+          open={!!selectedEvent}
+          onClose={() => setSelectedEvent(undefined)}
+          data={selectedEvent}
+        />}
+      <CalendarForm
+        open={openForm}
+        onClose={() => setFormOpen(false)}
       />
     </div>
   )
@@ -72,7 +108,6 @@ function EventDetails({
   open: boolean
   onClose: VoidFunction
   data: CalendarProp
-
 }) {
   return (
     <ClosableDialog
@@ -81,23 +116,22 @@ function EventDetails({
       style={{
         gap: 32,
         padding: '16px 32px'
-
       }}
     >
       {
         data.type === CalendarType.event &&
         <>
-          <Detail label='Event' value={data.title} />
+          <Detail label='Title' value={data.title} />
           <Detail label='Description' value={data.body} />
-          <Detail label='Evento' value={data.title} />
           <Detail label='Date:' value={dayjs(data?.date).format(`DD-MM-YYYY`)} />
           <Detail label='Time:' value={dayjs(data?.date).format(`HH:mm`)} />
           <Detail label='Covid Measure:' value={data.covidMeasure} />
           {data?.repeating &&
             <Detail label='Reapeating Event:' value={data.repeating} />
           }
-          {data?.participants &&
-            <Detail label='Number of Participants:' value={data.participants?.toString()} />
+          {data?.participants ?? 0 > 0
+            ? <Detail label='Number of Participants:' value={data.participants?.toString()} />
+            : <Detail label='Event Type' value={'Private'} />
           }
         </>
       }
@@ -133,6 +167,7 @@ function Card({
         cursor: type === CalendarType.event ? 'pointer' : undefined,
         placeItems: 'start',
         padding: 16,
+        marginLeft: 24,
         boxShadow: hovered ? `0px 4px 4px ${Colors.purpleLight}` : undefined,
         backgroundColor: Colors.white,
         borderRadius: 24,

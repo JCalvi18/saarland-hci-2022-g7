@@ -17,7 +17,7 @@ abstract class ATask extends ACalendar {
 
 abstract class AEvent extends ACalendar {
   type = CalendarType.event as const
-  repeating?: 'dayly' | 'weekly'
+  repeating?: 'daily' | 'weekly'
   covidMeasure?: '2G' | '2G+' | 'test'
   participants?: number
 }
@@ -58,7 +58,7 @@ export const calendarData: CalendarProp[] = [
     date: '2022-01-04T12:00:00.787Z',
     title: 'GYM',
     body: 'FitX at ArndtStrasse',
-    repeating: 'dayly',
+    repeating: 'daily',
     covidMeasure: 'test',
   }, {
     type: CalendarType.task,
