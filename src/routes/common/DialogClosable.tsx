@@ -3,6 +3,7 @@ import React, { PropsWithChildren, CSSProperties } from 'react'
 import { Dialog, Divider, IconButton, Typography } from '@material-ui/core'
 import { Close as CloseIcon } from '@material-ui/icons'
 import { Colors } from '../../theme/types'
+import { useMobileBreakPoint } from './sizeHooks'
 
 
 interface Props {
@@ -18,13 +19,12 @@ export default function ClosableDialog({
   children,
   style = {},
   paperStyle = {},
-  fullScreen = false,
 }: PropsWithChildren<Props>) {
 
-
+  const mobileBreakpoint = useMobileBreakPoint()
   return (
     <Dialog
-      fullScreen={fullScreen}
+      fullScreen={mobileBreakpoint}
       open={open}
     // onClose={onClose}
     >
@@ -33,9 +33,10 @@ export default function ClosableDialog({
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'flex-start',
-          borderRadius: fullScreen ? 0 : 8,
-          width: fullScreen ? undefined : 590,
-          height: fullScreen ? undefined : 700,
+          borderRadius: mobileBreakpoint ? 0 : 8,
+          width: mobileBreakpoint ? undefined : 590,
+          height: mobileBreakpoint ? undefined : 700,
+          flex: mobileBreakpoint ? 1 : undefined,
           ...paperStyle,
         }}
       >
