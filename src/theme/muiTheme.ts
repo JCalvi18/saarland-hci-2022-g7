@@ -1,6 +1,6 @@
 import { Colors } from './types'
 import theme from './main'
-import createTheme from '@mui/material/styles/createTheme'
+import { createTheme } from '@material-ui/core'
 
 
 const mainTypography = theme.typography

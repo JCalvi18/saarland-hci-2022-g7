@@ -1,6 +1,6 @@
 import React from 'react'
 import { Colors } from '../theme/types'
-import Typography from '@mui/material/Typography'
+import { Typography } from '@material-ui/core'
 import saarLogo from '../assets/logo.svg'
 
 export function HomePage() {
