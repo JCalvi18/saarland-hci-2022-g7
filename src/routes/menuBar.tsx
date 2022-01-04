@@ -1,8 +1,12 @@
 import React from 'react'
-import { Button } from '@material-ui/core'
+import { Button, Icon } from '@material-ui/core'
 import { Link } from 'react-router-dom';
 import { routes } from '../App';
-
+import {
+  Home as HomeIcon,
+  EventNote as CalendarIcon,
+  EmojiPeople as CommunityIcon,
+} from '@material-ui/icons';
 
 export function MenuBar() {
 
@@ -24,7 +28,7 @@ export function MenuBar() {
         to={`${routes.start}`}
         variant="contained"
         color="primary">
-        Welcome
+        <HomeIcon style={{ fontSize: 40 }} />
       </Button>
       <Button
         style={{ flex: 1 }}
@@ -32,7 +36,7 @@ export function MenuBar() {
         to={`${routes.calendar}`}
         variant="contained"
         color="primary">
-        Calendar
+        <CalendarIcon style={{ fontSize: 40 }} />
       </Button>
       <Button
         style={{ flex: 1 }}
@@ -40,7 +44,7 @@ export function MenuBar() {
         to={`${routes.communities}`}
         variant="contained"
         color="primary">
-        Communities
+        <CommunityIcon style={{ fontSize: 40 }} />
       </Button>
       {/* <Button
         style={{ flex: 1 }}

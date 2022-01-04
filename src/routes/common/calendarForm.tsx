@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FormControl, FormControlLabel, InputLabel, MenuItem, Select, Switch, Tab, Tabs, TextField } from '@material-ui/core'
+import { Button, FormControl, FormControlLabel, InputLabel, MenuItem, Select, Switch, Tab, Tabs, TextField } from '@material-ui/core'
 import ClosableDialog from './DialogClosable'
 // import { Colors } from '../theme/types'
 // import { DatePicker } from '@material-ui/pickers'
@@ -23,7 +23,8 @@ export function CalendarForm({
       onClose={onClose}
       style={{
         padding: '8px 32px',
-        gap: 16,
+        justifyContent: 'space-between',
+        flex: 1,
       }}
     >
       <div
@@ -45,72 +46,89 @@ export function CalendarForm({
           <Tab value={1} label='Event' />
         </Tabs>
       </div>
-      <TextField
-        label='Title'
-      />
-
-      <TextField
-        label='Description'
-      />
-
-      <TextField
-        id="datetime-local"
-        label="Date"
-        type="datetime-local"
-        defaultValue="2022-01-05T10:30"
-        InputLabelProps={{
-          shrink: true,
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 16,
+          flex: 1
         }}
-      />
-      {selectedTab > 0 &&
-        <>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={privateEvent}
-                onChange={() => setPrivateEvent(!privateEvent)}
-                name="checkedB"
-                color="primary"
-              />
-            }
-            label="Private"
-          />
+      >
+        <TextField
+          label='Title'
+        />
 
-          <FormControl >
-            <InputLabel >Repeating</InputLabel>
-            <Select
-              value={repeating}
-              onChange={(event) => setRepeating(event.target.value as string)}
-            >
-              <MenuItem value={10}>None</MenuItem>
-              <MenuItem value={20}>daily</MenuItem>
-              <MenuItem value={30}>weekly</MenuItem>
-            </Select>
-          </FormControl>
+        <TextField
+          label='Description'
+        />
 
-          <FormControl >
-            <InputLabel >Covid Measure</InputLabel>
-            <Select
-              value={covidM}
-              onChange={(event) => setCovidM(event.target.value as string)}
-            >
-              <MenuItem value={10}>None</MenuItem>
-              <MenuItem value={20}>2G</MenuItem>
-              <MenuItem value={30}>2G+</MenuItem>
-              <MenuItem value={40}>test</MenuItem>
-            </Select>
-          </FormControl>
+        <TextField
+          id="datetime-local"
+          label="Date"
+          type="datetime-local"
+          defaultValue="2022-01-05T10:30"
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+        {selectedTab > 0 &&
+          <>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={privateEvent}
+                  onChange={() => setPrivateEvent(!privateEvent)}
+                  name="checkedB"
+                  color="primary"
+                />
+              }
+              label="Private"
+            />
 
-          {!privateEvent &&
-            <TextField
-              label="Number of Participants"
-              type="number"
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />}
-        </>
-      }
+            <FormControl >
+              <InputLabel >Repeating</InputLabel>
+              <Select
+                value={repeating}
+                onChange={(event) => setRepeating(event.target.value as string)}
+              >
+                <MenuItem value={10}>None</MenuItem>
+                <MenuItem value={20}>daily</MenuItem>
+                <MenuItem value={30}>weekly</MenuItem>
+              </Select>
+            </FormControl>
+
+            <FormControl >
+              <InputLabel >Covid Measure</InputLabel>
+              <Select
+                value={covidM}
+                onChange={(event) => setCovidM(event.target.value as string)}
+              >
+                <MenuItem value={10}>Online</MenuItem>
+                <MenuItem value={20}>2G</MenuItem>
+                <MenuItem value={30}>2G+</MenuItem>
+                <MenuItem value={40}>test</MenuItem>
+              </Select>
+            </FormControl>
+
+            {!privateEvent &&
+              <TextField
+                label="Number of Participants"
+                type="number"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />}
+          </>
+        }
+      </div>
+      <Button
+        style={{ padding: '16px 8px', borderRadius: 16 }}
+        variant="contained"
+        color="primary"
+        onClick={onClose}
+      >
+        Create
+      </Button>
 
     </ClosableDialog>
   )

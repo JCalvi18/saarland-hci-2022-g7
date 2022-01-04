@@ -22,7 +22,8 @@ export function EventDetails({
       open={open}
       onClose={onClose}
       style={{
-        gap: 32,
+        flex: 1,
+        justifyContent: 'space-between',
         padding: '16px 32px'
       }}
     >
@@ -42,14 +43,25 @@ export function EventDetails({
             : <Detail label='Event Type' value={'Private'} />
           }
           {publicEvent &&
-            <Button
-              style={{ flex: 1, padding: '16px 8px', borderRadius: 16, }}
-              variant="contained"
-              color="primary"
-              onClick={onClose}
-            >
-              Add to Calendar
-            </Button>
+            <>
+              <Button
+                style={{ padding: '16px 8px', borderRadius: 16, }}
+                variant="contained"
+                color="primary"
+                onClick={onClose}
+              >
+                Add to Calendar
+              </Button>
+
+              <Button
+                style={{ padding: '16px 8px', borderRadius: 16, }}
+                variant="contained"
+                color="primary"
+                onClick={onClose}
+              >
+                Copy as private Event
+              </Button>
+            </>
           }
         </>
       }

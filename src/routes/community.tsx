@@ -27,22 +27,34 @@ export function CommunityPage() {
         display: 'flex',
         flexDirection: 'column',
         flex: 1,
-        width: '100%',
-        padding: '8px 0px',
+        padding: '32px 0px 8px',
         backgroundColor: Colors.blueLight,
-        gap: 24,
+        gap: 4,
       }}
     >
 
-      <Box sx={{
-        display: 'flex',
-        alignSelf: 'center',
-        alignItems: 'flex-end',
-        justifyContent: 'center',
-      }}>
-        <SearchIcon />
-        <TextField color='primary' label='Search' variant='standard' />
-      </Box>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          borderRadius: 16,
+        }}
+      >
+        <Typography variant='h4' >
+          Community
+        </Typography>
+        <Box sx={{
+          display: 'flex',
+          alignSelf: 'center',
+          alignItems: 'flex-end',
+          justifyContent: 'center',
+        }}>
+
+          <SearchIcon />
+          <TextField color='primary' label='Search' variant='standard' />
+        </Box>
+      </div>
       <div
         style={{
           display: 'flex',

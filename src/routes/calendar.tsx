@@ -27,21 +27,33 @@ export function CalendarPage() {
         display: 'flex',
         flexDirection: 'column',
         flex: 1,
-        padding: '8px 0px',
+        padding: '32px 0px 8px',
         backgroundColor: Colors.blueLight,
-        gap: 24,
+        gap: 4,
       }}
     >
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          borderRadius: 16,
+        }}
+      >
+        <Typography variant='h4' >
+          Calendar
+        </Typography>
+        <Box sx={{
+          display: 'flex',
+          alignSelf: 'center',
+          alignItems: 'flex-end',
+          justifyContent: 'center',
+        }}>
 
-      <Box sx={{
-        display: 'flex',
-        alignSelf: 'center',
-        alignItems: 'flex-end',
-        justifyContent: 'center',
-      }}>
-        <SearchIcon />
-        <TextField color='primary' label='Search' variant='standard' />
-      </Box>
+          <SearchIcon />
+          <TextField color='primary' label='Search' variant='standard' />
+        </Box>
+      </div>
       <div
         style={{
           display: 'flex',
@@ -66,6 +78,7 @@ export function CalendarPage() {
                   key={`${entry}-${i}`}
                   data={entry}
                   onEventSelect={() => setSelectedEvent(entry)}
+                  showEventType
                 />
               )
             }

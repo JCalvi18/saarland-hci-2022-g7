@@ -1,15 +1,33 @@
-import React, { useState } from 'react'
+import React, { CSSProperties, useState } from 'react'
 import { Colors } from '../../theme/types'
 import { CalendarProp, CalendarType } from '../data'
 import dayjs from 'dayjs'
 import { Checkbox, Typography } from '@material-ui/core'
+import {
+  Schedule as ScheduleIcon,
+  Person as PersonIcon,
+  Visibility as VisibilityIcon,
+  Repeat as RepeatIcon,
+  Assignment as AssignmentIcon,
+  EmojiPeople as EmojiPeopleIcon,
+} from '@material-ui/icons'
+
+const typographyWithIcon: CSSProperties = {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: 8
+}
 
 export function HCICard({
   data,
   onEventSelect,
+  showEventType = false,
 }: {
   data: CalendarProp
   onEventSelect: VoidFunction
+  showEventType?: boolean
 }) {
 
   const [check, setCheck] = useState(false)
@@ -36,22 +54,36 @@ export function HCICard({
         boxShadow: hovered ? `0px 6px 6px ${Colors.green}` : undefined,
         backgroundColor: Colors.white,
         borderRadius: 24,
-        gridTemplateColumns: 'minmax(2fr) minmax(1fr) minmax(1fr)',
+        gridTemplateColumns: '2fr 1fr 1fr',
         gridTemplateRows: 'repeat(3,1fr)',
         gridTemplateAreas: `
-          'date repeat type'
+          'date repeat typeName'
           'title  covid type'
           'body  participants type'
         `,
       }}
     >
-      <Typography variant='body1' style={{ gridArea: 'date' }}>
-        {dayjs(date).format('HH:mm')}
-      </Typography>
-      <Typography variant='subtitle1' style={{ gridArea: 'title' }}>
+      {showEventType &&
+        <div style={{ gridArea: 'typeName', ...typographyWithIcon, justifySelf: 'flex-end' }}>
+          {type === CalendarType.event
+            ? <EmojiPeopleIcon />
+            : <AssignmentIcon />
+          }
+          <Typography variant='body1'>
+            {type === CalendarType.event ? 'Event' : 'Task'}
+          </Typography>
+        </div>}
+
+      <div style={{ gridArea: 'date', ...typographyWithIcon }}>
+        <ScheduleIcon />
+        <Typography variant='body1'>
+          {dayjs(date).format('HH:mm')}
+        </Typography>
+      </div>
+      <Typography variant='h6' style={{ gridArea: 'title', fontWeight: 'bold' }}>
         {title}
       </Typography>
-      <Typography variant='body1' noWrap style={{ gridArea: 'body' }}>
+      <Typography variant='body1' noWrap style={{ marginLeft: 4, gridArea: 'body' }}>
         {body}
       </Typography>
 
@@ -72,17 +104,26 @@ export function HCICard({
       {type === CalendarType.event &&
         <>
           {data.repeating &&
-            <Typography variant='body1' style={{ gridArea: 'repeat' }}>
-              {data.repeating}
-            </Typography>
+            <div style={{ gridArea: 'repeat', ...typographyWithIcon }}>
+              <RepeatIcon />
+              <Typography variant='body1' >
+                {data.repeating}
+              </Typography>
+            </div>
           }
-          <Typography variant='body1' style={{ gridArea: 'covid' }}>
-            {data.covidMeasure}
-          </Typography>
-          {data.participants &&
-            <Typography variant='body1' style={{ gridArea: 'participants' }}>
-              {data.participants}
+          <div style={{ gridArea: 'covid', ...typographyWithIcon }}>
+            <VisibilityIcon />
+            <Typography variant='body1' >
+              {data.covidMeasure}
             </Typography>
+          </div>
+          {data.participants &&
+            <div style={{ gridArea: 'participants', ...typographyWithIcon }}>
+              <PersonIcon />
+              <Typography variant='body1' >
+                {data.participants}
+              </Typography>
+            </div>
           }
         </>
       }
