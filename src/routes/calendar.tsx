@@ -26,8 +26,7 @@ export function CalendarPage() {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-start',
-        width: '100%',
+        flex: 1,
         padding: '8px 0px',
         backgroundColor: Colors.gray2,
         gap: 24,

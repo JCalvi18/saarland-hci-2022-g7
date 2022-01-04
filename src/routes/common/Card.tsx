@@ -36,7 +36,7 @@ export function HCICard({
         boxShadow: hovered ? `0px 4px 4px ${Colors.purpleLight}` : undefined,
         backgroundColor: Colors.white,
         borderRadius: 24,
-        gridTemplateColumns: '2fr 1fr 1fr',
+        gridTemplateColumns: 'minmax(2fr) minmax(1fr) minmax(1fr)',
         gridTemplateRows: 'repeat(3,1fr)',
         gridTemplateAreas: `
           'date repeat type'

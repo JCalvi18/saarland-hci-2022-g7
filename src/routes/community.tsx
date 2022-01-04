@@ -26,7 +26,7 @@ export function CommunityPage() {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-start',
+        flex: 1,
         width: '100%',
         padding: '8px 0px',
         backgroundColor: Colors.gray2,

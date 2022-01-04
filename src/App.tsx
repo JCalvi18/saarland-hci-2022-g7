@@ -23,10 +23,11 @@ function App({ }: AppProps) {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'stretch',
+        // alignItems: 'center',
+        // justifyContent: 'stretch',
         margin: '0px auto',
         height: '95vh',
+        minWidth: 500,
         maxWidth: 800,
         gap: 8,
       }}
@@ -36,7 +37,7 @@ function App({ }: AppProps) {
           backgroundColor: Colors.yellowDisabled,
           display: 'flex',
           flex: 10,
-          width: '100%',
+          // width: '100%',
           borderRadius: 16,
           overflow: 'hidden',
         }}
